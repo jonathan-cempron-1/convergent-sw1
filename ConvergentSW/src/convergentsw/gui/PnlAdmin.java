@@ -5,6 +5,8 @@
  */
 package convergentsw.gui;
 
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author jonats
@@ -16,6 +18,11 @@ public class PnlAdmin extends javax.swing.JPanel {
      */
     public PnlAdmin() {
         initComponents();
+        ImageIcon icon = new ImageIcon();
+        jTabbedPane1.addTab("Accounts", icon, new PnlTabAccounts(), "manage accounts");
+        jTabbedPane1.addTab("Banks", icon, new PnlTabBanks(), "manage banks");
+        jTabbedPane1.addTab("Locations", icon, new PnlTabLocations(), "manage locations");
+        jTabbedPane1.addTab("Employees", icon, new PnlTabEmployees(), "manage employees");
     }
 
     /**

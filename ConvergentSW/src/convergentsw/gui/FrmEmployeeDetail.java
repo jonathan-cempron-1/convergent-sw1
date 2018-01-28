@@ -5,6 +5,11 @@
  */
 package convergentsw.gui;
 
+import java.awt.Point;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import javax.swing.JTable;
+
 /**
  *
  * @author jonats
@@ -16,6 +21,16 @@ public class FrmEmployeeDetail extends javax.swing.JFrame {
      */
     public FrmEmployeeDetail() {
         initComponents();
+        this.setVisible(true);
+        jTable1.addMouseListener(new MouseAdapter() {
+            public void mousePressed(MouseEvent mouseEvent) {
+                JTable table =(JTable) mouseEvent.getSource();
+                Point point = mouseEvent.getPoint();
+                int row = table.rowAtPoint(point);
+                if (mouseEvent.getClickCount() == 2)
+                    new FrmAccountDetail();
+            }
+        });
     }
 
     /**
@@ -61,7 +76,7 @@ public class FrmEmployeeDetail extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("name : ");
 

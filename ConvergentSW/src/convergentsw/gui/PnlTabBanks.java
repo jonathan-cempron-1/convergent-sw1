@@ -5,6 +5,11 @@
  */
 package convergentsw.gui;
 
+import java.awt.Point;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import javax.swing.JTable;
+
 /**
  *
  * @author jonats
@@ -16,6 +21,15 @@ public class PnlTabBanks extends javax.swing.JPanel {
      */
     public PnlTabBanks() {
         initComponents();
+        jTable1.addMouseListener(new MouseAdapter() {
+            public void mousePressed(MouseEvent mouseEvent) {
+                JTable table =(JTable) mouseEvent.getSource();
+                Point point = mouseEvent.getPoint();
+                int row = table.rowAtPoint(point);
+                if (mouseEvent.getClickCount() == 2)
+                    new FrmBankDetail();
+            }
+        });
     }
 
     /**
@@ -42,7 +56,7 @@ public class PnlTabBanks extends javax.swing.JPanel {
 
         jLabel2.setText("search : ");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "complete banks", "with accounts", "without accounts", "with active accounts", "without active accounts" }));
 
         jButton1.setText("ok");
 
@@ -62,6 +76,11 @@ public class PnlTabBanks extends javax.swing.JPanel {
         jScrollPane1.setViewportView(jTable1);
 
         jButton3.setText("add bank");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("remove bank");
 
@@ -114,6 +133,11 @@ public class PnlTabBanks extends javax.swing.JPanel {
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        new FrmBankAdd();
+    }//GEN-LAST:event_jButton3ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

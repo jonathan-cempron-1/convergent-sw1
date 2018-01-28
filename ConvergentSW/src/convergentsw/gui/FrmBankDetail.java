@@ -5,6 +5,11 @@
  */
 package convergentsw.gui;
 
+import java.awt.Point;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import javax.swing.JTable;
+
 /**
  *
  * @author jonats
@@ -16,6 +21,16 @@ public class FrmBankDetail extends javax.swing.JFrame {
      */
     public FrmBankDetail() {
         initComponents();
+        this.setVisible(true);
+        jTable2.addMouseListener(new MouseAdapter() {
+            public void mousePressed(MouseEvent mouseEvent) {
+                JTable table =(JTable) mouseEvent.getSource();
+                Point point = mouseEvent.getPoint();
+                int row = table.rowAtPoint(point);
+                if (mouseEvent.getClickCount() == 2)
+                    new FrmAccountDetail();
+            }
+        });
     }
 
     /**
@@ -47,7 +62,7 @@ public class FrmBankDetail extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("bank name : ");
 
@@ -142,8 +157,7 @@ public class FrmBankDetail extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(jButton3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jButton4))
                     .addComponent(jScrollPane2))
                 .addContainerGap())
         );

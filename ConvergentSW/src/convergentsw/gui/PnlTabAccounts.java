@@ -5,6 +5,15 @@
  */
 package convergentsw.gui;
 
+import java.awt.Point;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import javax.swing.JTable;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+
 /**
  *
  * @author jonats
@@ -16,6 +25,15 @@ public class PnlTabAccounts extends javax.swing.JPanel {
      */
     public PnlTabAccounts() {
         initComponents();
+        jTable1.addMouseListener(new MouseAdapter() {
+            public void mousePressed(MouseEvent mouseEvent) {
+                JTable table =(JTable) mouseEvent.getSource();
+                Point point = mouseEvent.getPoint();
+                int row = table.rowAtPoint(point);
+                if (mouseEvent.getClickCount() == 2)
+                    new FrmAccountDetail();
+            }
+        });
     }
 
     /**
@@ -42,11 +60,9 @@ public class PnlTabAccounts extends javax.swing.JPanel {
 
         jLabel2.setText("search : ");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "handled active accounts", "unhandled active accounts", "resolved accounts", "unresolved accounts", "complete accounts" }));
 
         jButton1.setText("ok");
-
-        jTextField1.setText("jTextField1");
 
         jButton2.setText("ok");
 
@@ -118,7 +134,6 @@ public class PnlTabAccounts extends javax.swing.JPanel {
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

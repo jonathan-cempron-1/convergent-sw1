@@ -16,6 +16,7 @@ public class FrmAccountDetail extends javax.swing.JFrame {
      */
     public FrmAccountDetail() {
         initComponents();
+        this.setVisible(true);
     }
 
     /**
@@ -66,7 +67,7 @@ public class FrmAccountDetail extends javax.swing.JFrame {
         jButton12 = new javax.swing.JButton();
         jButton13 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("is handled? : ");
 
@@ -150,6 +151,11 @@ public class FrmAccountDetail extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jTable2);
 
         jButton3.setText("add status");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("remove status");
 
@@ -195,6 +201,11 @@ public class FrmAccountDetail extends javax.swing.JFrame {
         jScrollPane3.setViewportView(jTable3);
 
         jButton5.setText("add resource person");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         jButton6.setText("remove resource person");
 
@@ -393,6 +404,15 @@ public class FrmAccountDetail extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        new FrmResourcePersonAdd();
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

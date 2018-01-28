@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package convergentsw.starter;
+import convergentsw.gui.*;
 
 /**
  *
@@ -16,6 +17,7 @@ public class ConvergentSW {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        new FrmWindow();
     }
     
 }
