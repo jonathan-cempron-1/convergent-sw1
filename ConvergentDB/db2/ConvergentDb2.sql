@@ -44,6 +44,30 @@ LOCK TABLES `Account` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `AccountInfo`
+--
+
+DROP TABLE IF EXISTS `AccountInfo`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `AccountInfo` (
+  `idAccountInfo` int(11) NOT NULL,
+  `info` varchar(45) DEFAULT NULL,
+  `idAccount` int(11) NOT NULL,
+  PRIMARY KEY (`idAccountInfo`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `AccountInfo`
+--
+
+LOCK TABLES `AccountInfo` WRITE;
+/*!40000 ALTER TABLE `AccountInfo` DISABLE KEYS */;
+/*!40000 ALTER TABLE `AccountInfo` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `AccountStatus`
 --
 
@@ -299,7 +323,6 @@ CREATE TABLE `Vehicle` (
   `chassisNum` varchar(45) DEFAULT NULL,
   `engineNum` varchar(45) DEFAULT NULL,
   `image` varchar(45) DEFAULT NULL,
-  `otherInfo` varchar(45) DEFAULT NULL,
   `idAccount` int(11) NOT NULL,
   PRIMARY KEY (`idVehicle`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -313,6 +336,31 @@ LOCK TABLES `Vehicle` WRITE;
 /*!40000 ALTER TABLE `Vehicle` DISABLE KEYS */;
 /*!40000 ALTER TABLE `Vehicle` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Table structure for table `VehicleInfo`
+--
+
+DROP TABLE IF EXISTS `VehicleInfo`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `VehicleInfo` (
+  `idVehicleInfo` int(11) NOT NULL AUTO_INCREMENT,
+  `info` varchar(45) DEFAULT NULL,
+  `dateSaved` date DEFAULT NULL,
+  `idVehicle` varchar(45) NOT NULL,
+  PRIMARY KEY (`idVehicleInfo`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `VehicleInfo`
+--
+
+LOCK TABLES `VehicleInfo` WRITE;
+/*!40000 ALTER TABLE `VehicleInfo` DISABLE KEYS */;
+/*!40000 ALTER TABLE `VehicleInfo` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -323,4 +371,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-01-28 12:33:15
+-- Dump completed on 2018-01-28 16:41:34

@@ -22,7 +22,7 @@ Employee Detail Window
 - complete assignments
 * edit employee details
 * deactivate employee
-* give assignment
+* add assignment
 
 TAB2
 = Banks
@@ -58,7 +58,7 @@ WINDOW5 <- TAB2, WINDOW4, WINDOW3
 (via click table entry)
 Account Details
 ~ isHandled
-~ isReasolved
+~ isResolved
 ~ vehicle detail
 ~ bank owner
 ~ personInterest
@@ -79,4 +79,3 @@ TAB4
 - locations count(accounts), count(active), count(resolved), count(unresolved)
 * add location
 * remove location
-* add location
