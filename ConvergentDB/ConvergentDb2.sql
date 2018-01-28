@@ -29,6 +29,7 @@ CREATE TABLE `Account` (
   `idBank` int(11) NOT NULL,
   `dateStart` date DEFAULT NULL,
   `dateEnd` date DEFAULT NULL,
+  `isResolved` tinyint(4) DEFAULT '0',
   PRIMARY KEY (`idAccount`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -187,9 +188,10 @@ CREATE TABLE `Employee` (
   `name` varchar(45) NOT NULL,
   `username` varchar(45) NOT NULL,
   `password` varchar(45) NOT NULL,
-  `adminPrivilege` tinyint(4) DEFAULT '0',
-  `gender` varchar(45) DEFAULT NULL,
   `bday` date DEFAULT NULL,
+  `gender` varchar(45) DEFAULT NULL,
+  `isActive` tinyint(4) DEFAULT '1',
+  `adminPrivilege` tinyint(4) DEFAULT '0',
   PRIMARY KEY (`idEmployee`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -321,4 +323,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-01-27  2:24:16
+-- Dump completed on 2018-01-28 12:33:15

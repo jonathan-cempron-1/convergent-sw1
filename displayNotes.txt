@@ -1,0 +1,82 @@
+- table view options
+~ text (jlabel display)
+* button
+CAPS container
+= Tab name
+
+TAB1
+= Employees
+- active employees
+- inactive employees
+- complete employees
+* add employee
+* remove employee
+
+WINDOW3 <- TAB1 
+(via click table entry)
+Employee Detail Window
+- active assignments
+- resolved assignments
+- unresolved assignmets
+- reassigned assignments
+- complete assignments
+* edit employee details
+* deactivate employee
+* give assignment
+
+TAB2
+= Banks
+- complete banks
+- with accounts
+- without accounts
+- with active accounts
+- without active accounts
+* add bank
+* remove bank
+
+WINDOW4 <- TAB2 
+(via click table entry)
+Bank Details
+- handled active accounts
+- unhandled active accounts
+- resolved accounts
+- unresolved accounts
+- complete accounts
+* edit bank details
+
+TAB3
+= Accounts
+- handled active accounts
+- unhandled active accounts
+- resolved accounts
+- unresolved accounts
+- complete accounts
+* add account
+* remove account
+
+WINDOW5 <- TAB2, WINDOW4, WINDOW3
+(via click table entry)
+Account Details
+~ isHandled
+~ isReasolved
+~ vehicle detail
+~ bank owner
+~ personInterest
+~ ResourcePerson(separate small table)
+- account status
+- handling employees
+* add status
+* remove status
+* add resource person
+* remove resource person
+* edit person interest details (opens FrmPersonInterestAdd with pre written inputs)
+* reassign account
+* terminate account as resolved
+* terminate as unresolved
+
+TAB4
+= Locations
+- locations count(accounts), count(active), count(resolved), count(unresolved)
+* add location
+* remove location
+* add location
