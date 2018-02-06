@@ -7,6 +7,8 @@ package convergentsw.gui;
 import convergentsw.dao.*;
 import convergentsw.starter.*;
 import java.awt.Point;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
@@ -38,8 +40,19 @@ public class PnlTabAccounts extends javax.swing.JPanel {
                     new FrmAccountDetail(rtd);
             }
         });
+        jComboBox1.addItemListener(new ItemListener() {
+            public void itemStateChanged(ItemEvent arg0) {
+                updateAccountsTable();
+            }
+        });
+        updateAccountsTable();
     }
-
+    
+    private void updateAccountsTable(){
+        String selected = jComboBox1.getSelectedItem().toString();
+        jTable1.setModel(rtd.cdd.getAccountTable(selected));
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -67,6 +80,11 @@ public class PnlTabAccounts extends javax.swing.JPanel {
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "handled active accounts", "unhandled active accounts", "resolved accounts", "unresolved accounts", "complete accounts" }));
 
         jButton1.setText("ok");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("ok");
 
@@ -138,6 +156,11 @@ public class PnlTabAccounts extends javax.swing.JPanel {
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        updateAccountsTable();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

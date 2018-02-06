@@ -7,6 +7,8 @@ package convergentsw.gui;
 import convergentsw.dao.*;
 import convergentsw.starter.*;
 import java.awt.Point;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JTable;
@@ -34,6 +36,17 @@ public class PnlTabEmployees extends javax.swing.JPanel {
                     new FrmEmployeeDetail(rtd);
             }
         });
+        jComboBox1.addItemListener(new ItemListener() {
+            public void itemStateChanged(ItemEvent arg0) {
+                updateEmployeesTable();
+            }
+        });
+        updateEmployeesTable();
+    }
+    
+    private void updateEmployeesTable(){
+        String selected = jComboBox1.getSelectedItem().toString();
+        jTable1.setModel(rtd.cdd.getEmployeeTable(selected));
     }
 
     /**
@@ -76,6 +89,11 @@ public class PnlTabEmployees extends javax.swing.JPanel {
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "active employees", "inactive employees", "all employees" }));
 
         jButton1.setText("ok");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("ok");
 
@@ -144,6 +162,11 @@ public class PnlTabEmployees extends javax.swing.JPanel {
         // TODO add your handling code here:
         new FrmEmployeeAdd(rtd);
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        updateEmployeesTable();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -7,6 +7,8 @@ package convergentsw.gui;
 import convergentsw.dao.*;
 import convergentsw.starter.*;
 import java.awt.Point;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JTable;
@@ -34,6 +36,17 @@ public class PnlTabBanks extends javax.swing.JPanel {
                     new FrmBankDetail(rtd);
             }
         });
+        jComboBox1.addItemListener(new ItemListener() {
+            public void itemStateChanged(ItemEvent arg0) {
+                updateBanksTable();
+            }
+        });
+        updateBanksTable();
+    }
+    
+    private void updateBanksTable(){
+        String selected = jComboBox1.getSelectedItem().toString();
+        jTable1.setModel(rtd.cdd.getBankTable(selected));
     }
 
     /**
@@ -63,6 +76,11 @@ public class PnlTabBanks extends javax.swing.JPanel {
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "complete banks", "with accounts", "without accounts", "with active accounts", "without active accounts" }));
 
         jButton1.setText("ok");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("ok");
 
@@ -142,6 +160,11 @@ public class PnlTabBanks extends javax.swing.JPanel {
         // TODO add your handling code here:
         new FrmBankAdd(rtd);
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        updateBanksTable();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

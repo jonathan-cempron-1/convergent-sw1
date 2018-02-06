@@ -6,6 +6,8 @@
 package convergentsw.gui;
 import convergentsw.dao.*;
 import convergentsw.starter.*;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 
 /**
  *
@@ -21,6 +23,16 @@ public class PnlTabLocations extends javax.swing.JPanel {
     public PnlTabLocations(RuntimeData r) {
         rtd = r;
         initComponents();
+        jComboBox1.addItemListener(new ItemListener() {
+            public void itemStateChanged(ItemEvent arg0) {
+                updateLocationsTable();
+            }
+        });
+        updateLocationsTable();
+    }
+    
+    private void updateLocationsTable(){
+        jTable1.setModel(rtd.cdd.getLocationTable());
     }
 
     /**
@@ -55,6 +67,11 @@ public class PnlTabLocations extends javax.swing.JPanel {
         });
 
         jButton1.setText("ok");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("ok");
 
@@ -130,6 +147,11 @@ public class PnlTabLocations extends javax.swing.JPanel {
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        updateLocationsTable();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

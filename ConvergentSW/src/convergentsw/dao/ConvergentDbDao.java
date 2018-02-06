@@ -73,4 +73,53 @@ public class ConvergentDbDao {
         }
         return "";
     }
+    
+    public DefaultTableModel getEmployeeTable(String selected){
+        String query = "select * from Employee;";
+        if(selected.equals("active employees"))
+            query = "select * from Employee where isActive = 1;";
+        else if(selected.equals("inactive employees"))
+            query = "select * from Employee where isActive = 0;";
+        return dao.queryTable(query);
+    }
+    
+    public DefaultTableModel getLocationTable(){
+        String query = "select * from Location;";
+        return dao.queryTable(query);
+    }
+    
+    public DefaultTableModel getBankTable(String selected){
+        String query = "select * from Bank;";
+        if(selected.equals("with accounts"))
+            query = "select name, branch, completeAddress from Bank, Account, Address where Bank.idBank = Account.idBank and Bank.idBank = Address.idOwner;";
+        else if(selected.equals("with active accounts"))
+            query = "select name, branch, completeAddress from Bank, Account, Address, Assignment where Bank.idBank = Account.idBank and Bank.idBank = Address.idOwner and Assignment.idAccount = Account.idAccount;";
+        else if(selected.equals("without accounts"))
+            query = "select name, branch, completeAddress from Bank, Address where Bank.idBank = Address.idOwner and idBank not in (select Bank.idBank from Bank, Account, Address where Bank.idBank = Account.idBank and Bank.idBank = Address.idOwner);";
+        else if(selected.equals("without active accounts"))
+            query = "select name, branch, completeAddress from Bank, Address where Bank.idBank = Address.idOwner and idBank not in (select Bank.idBank from Bank, Account, Address, Assignment where Bank.idBank = Account.idBank and Bank.idBank = Address.idOwner and Assignment.idAccount = Account.idAccount);";
+        return dao.queryTable(query);
+    }
+    
+    public DefaultTableModel getAccountTable(String selected){
+        String query = "select Bank.name, Vehicle.color, Vehicle.model, Vehicle.year, PersonInterest.name from Account, Bank, Vehicle, PersonInterest where Account.idBank = Bank.idBank and Account.idAccount = Vehicle.idAccount and Account.idAccount = PersonInterest.idAccount;";
+        if(selected.equals("handled active accounts"))
+            query = "select Bank.name, Vehicle.color, Vehicle.model, Vehicle.year, PersonInterest.name from Account, Bank, Vehicle, PersonInterest, Assignment where Account.idBank = Bank.idBank and Account.idAccount = Vehicle.idAccount and Account.idAccount = PersonInterest.idAccount and Assignment.idAccount = Account.idAccount;";
+        else if(selected.equals("unhandled active accounts"))
+            query = "select Bank.name, Vehicle.color, Vehicle.model, Vehicle.year, PersonInterest.name from Account, Bank, Vehicle, PersonInterest, Assignment where Account.idBank = Bank.idBank and Account.idAccount = Vehicle.idAccount and Account.idAccount = PersonInterest.idAccount and Account.idAccount not in (select Assignment.idAccount from Assignment);";
+        else if(selected.equals("resolved accounts"))
+            query = "select Bank.name, Vehicle.model, Vehicle.year, PersonInterest.name from Account, Bank, Vehicle, PersonInterest where Account.idBank = Bank.idBank and Account.idAccount = Vehicle.idAccount and Account.idAccount = PersonInterest.idAccount and Account.isResolved = 1;";
+        else if(selected.equals("unresolved accounts"))
+            query = "select Bank.name, Vehicle.model, Vehicle.year, PersonInterest.name from Account, Bank, Vehicle, PersonInterest where Account.idBank = Bank.idBank and Account.idAccount = Vehicle.idAccount and Account.idAccount = PersonInterest.idAccount and Account.isResolved = 0;";
+        return dao.queryTable(query);
+    }
+    
+    public DefaultTableModel getAccountBankTable(String selected, String bankId, int employeeId){
+        String query = "select Vehicle.color, Vehicle.model, Vehicle.year, PersonInterest.name, type,  contactInfo from Account, Bank, Vehicle, PersonInterest, ContactInfo, Assignment where Account.idBank = Bank.idBank and Account.idAccount = Vehicle.idAccount and Account.idAccount = PersonInterest.idAccount and idPersonInterest = ContactInfo.idOwner and Assignment.idAccount = Account.idAccount and Assignment.idEmployee = "+employeeId+" and Bank.idBank = "+bankId+";";
+        if(selected.equals("unresolved accounts"))
+            query = "select Vehicle.color, Vehicle.model, Vehicle.year, PersonInterest.name, type,  contactInfo from Account, Bank, Vehicle, PersonInterest, ContactInfo, Assignment where Account.idBank = Bank.idBank and Account.idAccount = Vehicle.idAccount and Account.idAccount = PersonInterest.idAccount and idPersonInterest = ContactInfo.idOwner and Assignment.idAccount = Account.idAccount and Assignment.idEmployee = "+employeeId+" and Bank.idBank = "+bankId+" and Account.isResolved = 0;";
+        if(selected.equals("resolved accounts"))
+            query = "select Vehicle.color, Vehicle.model, Vehicle.year, PersonInterest.name, type,  contactInfo from Account, Bank, Vehicle, PersonInterest, ContactInfo, Assignment where Account.idBank = Bank.idBank and Account.idAccount = Vehicle.idAccount and Account.idAccount = PersonInterest.idAccount and idPersonInterest = ContactInfo.idOwner and Assignment.idAccount = Account.idAccount and Assignment.idEmployee = "+employeeId+" and Bank.idBank = "+bankId+" and Account.isResolved = 1;";
+        return dao.queryTable(query);
+    }
 }
