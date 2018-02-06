@@ -1,0 +1,13 @@
+11100000 Employee 
+22200000 Bank
+33300000 Location
+44400000 Address
+55500000 ContactInfo
+66600000 Account
+77700000 AccountInfo
+88800000 Vehicle
+99900000 VehicleInfo
+10100000 AccountStatus
+10200000 PersonInterest
+10300000 ResourcePerson
+10400000 Assignment
