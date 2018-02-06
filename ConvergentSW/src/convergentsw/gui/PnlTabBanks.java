@@ -4,7 +4,8 @@
  * and open the template in the editor.
  */
 package convergentsw.gui;
-
+import convergentsw.dao.*;
+import convergentsw.starter.*;
 import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -15,11 +16,14 @@ import javax.swing.JTable;
  * @author jonats
  */
 public class PnlTabBanks extends javax.swing.JPanel {
+    
+    RuntimeData rtd;
 
     /**
      * Creates new form PnlTabBanks
      */
-    public PnlTabBanks() {
+    public PnlTabBanks(RuntimeData r) {
+        rtd = r;
         initComponents();
         jTable1.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent mouseEvent) {
@@ -27,7 +31,7 @@ public class PnlTabBanks extends javax.swing.JPanel {
                 Point point = mouseEvent.getPoint();
                 int row = table.rowAtPoint(point);
                 if (mouseEvent.getClickCount() == 2)
-                    new FrmBankDetail();
+                    new FrmBankDetail(rtd);
             }
         });
     }
@@ -136,7 +140,7 @@ public class PnlTabBanks extends javax.swing.JPanel {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        new FrmBankAdd();
+        new FrmBankAdd(rtd);
     }//GEN-LAST:event_jButton3ActionPerformed
 
 

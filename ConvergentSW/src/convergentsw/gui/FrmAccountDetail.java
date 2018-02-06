@@ -4,17 +4,22 @@
  * and open the template in the editor.
  */
 package convergentsw.gui;
+import convergentsw.dao.*;
+import convergentsw.starter.*;
 
 /**
  *
  * @author jonats
  */
 public class FrmAccountDetail extends javax.swing.JFrame {
+    
+    RuntimeData rtd;
 
     /**
      * Creates new form FrmAccountDetail
      */
-    public FrmAccountDetail() {
+    public FrmAccountDetail(RuntimeData r) {
+        rtd = r;
         initComponents();
         this.setVisible(true);
     }
@@ -411,7 +416,7 @@ public class FrmAccountDetail extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-        new FrmResourcePersonAdd();
+        new FrmResourcePersonAdd(rtd);
     }//GEN-LAST:event_jButton5ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

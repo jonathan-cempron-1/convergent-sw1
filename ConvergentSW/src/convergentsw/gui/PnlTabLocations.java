@@ -4,17 +4,22 @@
  * and open the template in the editor.
  */
 package convergentsw.gui;
+import convergentsw.dao.*;
+import convergentsw.starter.*;
 
 /**
  *
  * @author jonats
  */
 public class PnlTabLocations extends javax.swing.JPanel {
+    
+    RuntimeData rtd;
 
     /**
      * Creates new form PnlTabLocations
      */
-    public PnlTabLocations() {
+    public PnlTabLocations(RuntimeData r) {
+        rtd = r;
         initComponents();
     }
 

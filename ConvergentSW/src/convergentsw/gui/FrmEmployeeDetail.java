@@ -4,7 +4,8 @@
  * and open the template in the editor.
  */
 package convergentsw.gui;
-
+import convergentsw.dao.*;
+import convergentsw.starter.*;
 import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -15,11 +16,14 @@ import javax.swing.JTable;
  * @author jonats
  */
 public class FrmEmployeeDetail extends javax.swing.JFrame {
+    
+    RuntimeData rtd;
 
     /**
      * Creates new form FrmEmployeeDetail
      */
-    public FrmEmployeeDetail() {
+    public FrmEmployeeDetail(RuntimeData r) {
+        rtd = r;
         initComponents();
         this.setVisible(true);
         jTable1.addMouseListener(new MouseAdapter() {
@@ -28,7 +32,7 @@ public class FrmEmployeeDetail extends javax.swing.JFrame {
                 Point point = mouseEvent.getPoint();
                 int row = table.rowAtPoint(point);
                 if (mouseEvent.getClickCount() == 2)
-                    new FrmAccountDetail();
+                    new FrmAccountDetail(rtd);
             }
         });
     }

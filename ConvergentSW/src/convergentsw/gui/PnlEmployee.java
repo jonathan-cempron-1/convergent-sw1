@@ -4,18 +4,26 @@
  * and open the template in the editor.
  */
 package convergentsw.gui;
+import convergentsw.dao.*;
+import convergentsw.starter.*;
+import javax.swing.ImageIcon;
 
 /**
  *
  * @author jonats
  */
 public class PnlEmployee extends javax.swing.JPanel {
+    
+    RuntimeData rtd;
 
     /**
      * Creates new form PnlEmployee
      */
-    public PnlEmployee() {
+    public PnlEmployee(RuntimeData r) {
+        rtd = r;
         initComponents();
+        ImageIcon icon = new ImageIcon();
+        jTabbedPane1.addTab("Assignments", icon, new PnlTabAssignments(rtd), "view assignments");
     }
 
     /**

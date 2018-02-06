@@ -4,7 +4,8 @@
  * and open the template in the editor.
  */
 package convergentsw.gui;
-
+import convergentsw.dao.*;
+import convergentsw.starter.*;
 import javax.swing.ImageIcon;
 
 /**
@@ -12,17 +13,20 @@ import javax.swing.ImageIcon;
  * @author jonats
  */
 public class PnlAdmin extends javax.swing.JPanel {
+    
+    RuntimeData rtd;
 
     /**
      * Creates new form PnlAdmin
      */
-    public PnlAdmin() {
+    public PnlAdmin(RuntimeData r) {
+        rtd = r;
         initComponents();
         ImageIcon icon = new ImageIcon();
-        jTabbedPane1.addTab("Accounts", icon, new PnlTabAccounts(), "manage accounts");
-        jTabbedPane1.addTab("Banks", icon, new PnlTabBanks(), "manage banks");
-        jTabbedPane1.addTab("Locations", icon, new PnlTabLocations(), "manage locations");
-        jTabbedPane1.addTab("Employees", icon, new PnlTabEmployees(), "manage employees");
+        jTabbedPane1.addTab("Accounts", icon, new PnlTabAccounts(rtd), "manage accounts");
+        jTabbedPane1.addTab("Banks", icon, new PnlTabBanks(rtd), "manage banks");
+        jTabbedPane1.addTab("Locations", icon, new PnlTabLocations(rtd), "manage locations");
+        jTabbedPane1.addTab("Employees", icon, new PnlTabEmployees(rtd), "manage employees");
     }
 
     /**

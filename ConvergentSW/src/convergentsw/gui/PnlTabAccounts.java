@@ -4,7 +4,8 @@
  * and open the template in the editor.
  */
 package convergentsw.gui;
-
+import convergentsw.dao.*;
+import convergentsw.starter.*;
 import java.awt.Point;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -19,11 +20,14 @@ import javax.swing.event.ListSelectionListener;
  * @author jonats
  */
 public class PnlTabAccounts extends javax.swing.JPanel {
+    
+    RuntimeData rtd;
 
     /**
      * Creates new form PnlTabAccounts
      */
-    public PnlTabAccounts() {
+    public PnlTabAccounts(RuntimeData r) {
+        rtd = r;
         initComponents();
         jTable1.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent mouseEvent) {
@@ -31,7 +35,7 @@ public class PnlTabAccounts extends javax.swing.JPanel {
                 Point point = mouseEvent.getPoint();
                 int row = table.rowAtPoint(point);
                 if (mouseEvent.getClickCount() == 2)
-                    new FrmAccountDetail();
+                    new FrmAccountDetail(rtd);
             }
         });
     }

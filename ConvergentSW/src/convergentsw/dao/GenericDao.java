@@ -4,11 +4,6 @@
  * and open the template in the editor.
  */
 package convergentsw.dao;
-
-/**
- *
- * @author jonats
- */
 import java.sql.*;
 import java.util.Vector;
 import javax.swing.JOptionPane;

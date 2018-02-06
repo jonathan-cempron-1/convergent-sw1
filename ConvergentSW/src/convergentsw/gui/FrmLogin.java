@@ -4,18 +4,25 @@
  * and open the template in the editor.
  */
 package convergentsw.gui;
+import convergentsw.dao.*;
+import convergentsw.starter.*;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author jonats
  */
 public class FrmLogin extends javax.swing.JFrame {
+    
+    RuntimeData rtd;
 
     /**
      * Creates new form FrmLogin
      */
-    public FrmLogin() {
+    public FrmLogin(RuntimeData r) {
+        rtd = r;
         initComponents();
+        this.setVisible(true);
     }
 
     /**
@@ -45,7 +52,12 @@ public class FrmLogin extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("login");
+        jButton1.setText("log in");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -88,6 +100,19 @@ public class FrmLogin extends javax.swing.JFrame {
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        String username = jTextField1.getText();
+        String password = new String(jPasswordField1.getPassword());
+        if(rtd.cdd.isValidEmployeeLogin(username, password)){
+            rtd.loggedUserID = rtd.cdd.getEmployeeId(username, password);
+            new FrmWindow(rtd);
+            this.setVisible(false);
+        }
+        else
+            JOptionPane.showMessageDialog(null, "invalid username or password please retry", "Something went wrong", JOptionPane.ERROR_MESSAGE);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

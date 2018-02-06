@@ -4,17 +4,22 @@
  * and open the template in the editor.
  */
 package convergentsw.gui;
+import convergentsw.dao.*;
+import convergentsw.starter.*;
 
 /**
  *
  * @author jonats
  */
 public class FrmAddressAdd extends javax.swing.JFrame {
+    
+    RuntimeData rtd;
 
     /**
      * Creates new form FrmAddressAdd
      */
-    public FrmAddressAdd() {
+    public FrmAddressAdd(RuntimeData r) {
+        rtd = r;
         initComponents();
         this.setVisible(true);
     }
