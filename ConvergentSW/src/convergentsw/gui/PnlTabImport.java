@@ -6,28 +6,21 @@
 package convergentsw.gui;
 import convergentsw.dao.*;
 import convergentsw.starter.*;
-import javax.swing.ImageIcon;
 
 /**
  *
  * @author jonats
  */
-public class PnlAdmin extends javax.swing.JPanel {
-    
-    RuntimeData rtd;
+public class PnlTabImport extends javax.swing.JPanel {
 
+    RuntimeData rtd;
+    
     /**
-     * Creates new form PnlAdmin
+     * Creates new form PnlTabImport
      */
-    public PnlAdmin(RuntimeData r) {
+    public PnlTabImport(RuntimeData r) {
         rtd = r;
         initComponents();
-        ImageIcon icon = new ImageIcon();
-        jTabbedPane1.addTab("Accounts", icon, new PnlTabAccounts(rtd), "manage accounts");
-        jTabbedPane1.addTab("Banks", icon, new PnlTabBanks(rtd), "manage banks");
-        jTabbedPane1.addTab("Locations", icon, new PnlTabLocations(rtd), "manage locations");
-        jTabbedPane1.addTab("Employees", icon, new PnlTabEmployees(rtd), "manage employees");
-        jTabbedPane1.addTab("Import", icon, new PnlTabImport(rtd), "import documents");
     }
 
     /**
@@ -39,22 +32,19 @@ public class PnlAdmin extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTabbedPane1 = new javax.swing.JTabbedPane();
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+            .addGap(0, 400, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+            .addGap(0, 300, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTabbedPane jTabbedPane1;
     // End of variables declaration//GEN-END:variables
 }

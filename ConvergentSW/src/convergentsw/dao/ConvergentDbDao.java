@@ -17,9 +17,11 @@ import java.util.*;
  */
 public class ConvergentDbDao {
     
-    String url = "jdbc:mysql://localhost:3306/convergentDb2";
+    //String url = "jdbc:mysql://localhost:3306/convergentDb2";
+    //String pass = "abc123";
+    String url = "jdbc:mysql://192.168.1.5:3306/convergentDb2";
+    String pass = "pkp420";
     String user = "root";
-    String pass = "abc123";
     GenericDao dao = new GenericDao(url, user, pass);
     
     public boolean isValidEmployeeLogin(String username, String password){
